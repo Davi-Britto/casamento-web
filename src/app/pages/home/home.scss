@@ -1,0 +1,128 @@
+.container-home {
+    position: relative;
+    width: 100%;
+    min-height: 100svh;
+    overflow: hidden;
+    color: var(--cor-texto-secundaria);
+}
+
+.container-home img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.container-home::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(to bottom,
+            rgba(91, 47, 30, 0.45),
+            rgba(91, 47, 30, 0.20),
+            rgba(91, 47, 30, 0.80));
+
+    pointer-events: none;
+}
+
+.conteudo {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    min-height: 100svh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 40px 24px;
+
+    opacity: 0;
+    transform: translateY(-40px);
+    filter: blur(4px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        filter 0.8s ease;
+}
+
+.conteudo.entrando {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+}
+
+.conteudo.saindo {
+    opacity: 0;
+    transform: translateY(-40px);
+    filter: blur(4px);
+}
+
+.info-topo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: var(--fonte-primaria);
+    color: var(--cor-texto-secundaria);
+    letter-spacing: 2px;
+}
+
+.info-meio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    max-width: 700px;
+    gap: 20px;
+}
+
+.info-meio h1 {
+    font-family: var(--fonte-titulo);
+    font-weight: 400;
+    font-style: normal;
+    font-size: clamp(64px, 12vw, 120px);
+    line-height: 1;
+}
+
+.info-meio p {
+    font-family: var(--fonte-secundaria);
+    color: var(--cor-texto-secundaria);
+    font-size: clamp(14px, 2vw, 18px);
+    line-height: 1.5;
+}
+
+.info-baixo {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.info-baixo button {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--cor-texto-secundaria);
+    border: none;
+    cursor: pointer;
+    transition: 0.5s;
+    font-family: var(--fonte-primaria);
+    font-size: clamp(10px, 2vw, 14px);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.info-baixo button:hover {
+    color: var(--cor-texto-primaria);
+    background-color: var(--terracota);
+    transition: 0.5s;
+}

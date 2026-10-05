@@ -1,0 +1,89 @@
+<section class="section-padrao section-presentes" appScrollReveal>
+    <div class="cabecalho">
+        <p class="subtitulo">Lista de Presentes</p>
+        <h1>Presentear é opcional, sua presença é o essencial!</h1>
+        <p>Se quiser nos presentear, escolha um item simbólico e envie por Pix. Cada cota vira uma lembrança da nossa
+            nova vida juntos.</p>
+    </div>
+
+    <div class="presentes">
+        <div class="card">
+            <img src="images/presentes/meme1.jpg" alt="">
+            <div class="card-texto">
+                <p>Ajuda pra o primeiro passeio na lua de mel</p>
+                <h4>R$ 200,00</h4>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/presentes/meme2.jpg" alt="">
+            <div class="card-texto">
+                <p>Pau de macarrão pra noiva usar quando necessário</p>
+                <h4>R$ 605,01</h4>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/presentes/meme3.jpg" alt="">
+            <div class="card-texto">
+                <p>Capacete para o noivo se defender do pau de macarrão</p>
+                <h4>R$ 430,00</h4>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/presentes/meme4.png" alt="">
+            <div class="card-texto">
+                <p>Pijama do noivo</p>
+                <h4>R$ 123,45</h4>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/presentes/meme5.jpg" alt="">
+            <div class="card-texto">
+                <p>Parcela do vestido da noiva</p>
+                <h4>R$ 786,29</h4>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/presentes/meme6.jpg" alt="">
+            <div class="card-texto">
+                <p>Vale Coquinha por 2 meses</p>
+                <h4>R$ 329,99</h4>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/presentes/meme7.jpg" alt="">
+            <div class="card-texto">
+                <p>Primeiro lugar na fila do buffet</p>
+                <h4>R$ 67,67</h4>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/presentes/meme8.jpg" alt="">
+            <div class="card-texto">
+                <p>Dei o melhor presente</p>
+                <h4>R$ 2.000,00</h4>
+            </div>
+        </div>
+        <div class="card pix">
+            <img src="images/presentes/qrcode.jpg" alt="">
+            <div class="pix-info">
+                <h1>Chave Pix</h1>
+                <h4>davi.m.britto@gmail.com</h4>
+                <button (click)="copiarPix()">
+                    <span class="material-symbols-outlined">
+                        content_copy
+                    </span>
+                    <p>Copiar Chave Pix</p>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+@if (notificacaoAberta) {
+    <app-notificacao 
+        titulo="Chave PIX copiada!" 
+        mensagem="A chave foi copiada para sua área de transferência."
+        icone="content_copy">
+    </app-notificacao>
+    }

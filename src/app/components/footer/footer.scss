@@ -1,0 +1,77 @@
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 500px;
+    padding: 60px 24px 25px;
+    background-color: var(--marrom);
+    text-align: center;
+    color: #f1d2a4;
+    font-family: var(--fonte-secundaria);
+}
+
+.mensagem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.mensagem p {
+    margin: 0;
+    font-size: clamp(14px, 1.4vw, 16px);
+    line-height: 1.6;
+}
+
+.mensagem h1 {
+    margin: 10px;
+    font-family: var(--fonte-titulo);
+    font-size: clamp(40px, 9vw, 70px);
+    font-weight: 400;
+    line-height: 1;
+}
+
+.versiculo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    max-width: 500px;
+}
+
+.versiculo p {
+    font-family: var(--fonte-secundaria);
+    font-size: clamp(13px, 1.3vw, 17px);
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.versiculo span {
+    font-family: var(--fonte-primaria);
+    font-size: clamp(11px, 1vw, 14px);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.creditos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-top: 20px;
+    border-top: 1px solid rgba(241, 210, 164, 0.25);
+    gap: 4px;
+}
+
+.creditos p {
+    margin: 0;
+    font-family: var(--fonte-primaria);
+    font-size: clamp(10px, 0.9vw, 12px);
+    opacity: 0.7;
+}
+
+.creditos strong {
+    font-weight: 600;
+}

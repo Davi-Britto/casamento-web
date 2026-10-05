@@ -1,0 +1,41 @@
+<section class="hero-convite">
+    <img src="/images/home-background.jpg" alt="">
+
+    <div class="conteudo" [class.entrando]="entrando">
+
+        <div class="info-topo">
+            <p>Bem vindo ao nosso casamento!</p>
+        </div>
+
+        <div class="info-meio">
+            <h1>
+                Isabella
+                <span class="material-symbols-outlined">favorite</span>
+                Davi
+            </h1>
+
+            <div class="data-local">
+                <p>Sábado · 26 de Dezembro de 2026</p>
+                <p>Chácara dos Sinos - SP</p>
+            </div>
+
+            <p>"Para que todos vejam, e saibam, e considerem, e juntamente entendam que a mão do Senhor fez isto, e o
+                Santo de Israel o criou" - Isaías 41:20.</p>
+        </div>
+
+        <div class="info-baixo">
+
+            <app-cronometro></app-cronometro>
+
+            <button (click)="irParaConfirmacao()">Confirmar Presença</button>
+
+            <span></span>
+
+            <span class="material-symbols-outlined seta-scroll">
+                keyboard_double_arrow_down
+            </span>
+        </div>
+
+    </div>
+
+</section>

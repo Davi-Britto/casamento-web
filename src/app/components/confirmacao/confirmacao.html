@@ -1,0 +1,60 @@
+<section id="confirmacao" class="section-padrao confirmacao-section">
+    <div class="cabecalho">
+        <p class="subtitulo">Confirmação de presença</p>
+        <h1>Você vem celebrar com a gente?</h1>
+    </div>
+
+    <div class="confirmacao" appScrollReveal>
+        <div class="card-cabecalho">
+            <p>convite de</p>
+            <h1>Familia Bassi</h1>
+        </div>
+
+        <div class="lista-convidados">
+            @for (convidado of convidados; track convidado.nome) {
+
+            <div class="convidado">
+
+                <p>{{ convidado.nome }}</p>
+
+                <div class="acoes">
+
+                    <button [class.selecionado]="convidado.resposta === 'vou'" (click)="convidado.resposta = 'vou'">
+
+                        <span class="material-symbols-outlined">
+                            check_small
+                        </span>
+
+                        Vou
+                    </button>
+
+                    <button [class.selecionado]="convidado.resposta === 'nao-vou'"
+                        (click)="convidado.resposta = 'nao-vou'">
+
+                        <span class="material-symbols-outlined">
+                            close_small
+                        </span>
+
+                        Não Vou
+                    </button>
+
+                </div>
+
+            </div>
+            
+            }
+        </div>
+
+        <div class="card-rodape">
+            <p>Você pode alterar sua resposta a qualquer momento até 30 dias antes do casamento.</p>
+            <button (click)="confirmarPresenca()">Confirmar</button>
+        </div>
+    </div>
+
+    @if (popupAberto) {
+    <app-popup titulo="Presença confirmada!"
+        mensagem="Ficamos muito felizes em saber que você estará com a gente nesse dia especial."
+        (fechar)="fecharPopup()">
+    </app-popup>
+    }
+</section>

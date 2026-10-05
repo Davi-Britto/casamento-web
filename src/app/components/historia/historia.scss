@@ -1,0 +1,129 @@
+.historia {
+    background: #F4E8DC;
+}
+
+.historia-timeline{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    gap: 30px;
+}
+
+.historia-item {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    grid-template-areas: "imagem point descricao";
+    align-items: center;
+    gap: 30px;
+}
+
+.historia-imagem img {
+    width: 100%;
+    height: 300px;
+    border-radius: 30px;
+    object-fit: cover;
+    box-shadow:
+        0 5px 30px rgba(91, 47, 30, 0.20),
+        0 5px 10px rgba(91, 47, 30, 0.12);
+    grid-area: imagem;
+}
+
+.point {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    grid-area: point;
+}
+
+.point span {
+    color: var(--terracota);
+    font-size: clamp(38px, 5vw, 60px);
+    font-variation-settings: 'FILL' 1;
+    background-color: #F4E8DC;
+}
+
+.historia-descricao {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    grid-area: descricao;
+}
+
+.historia-descricao h1 {
+    font-size: clamp(24px, 2.5vw, 32px);
+}
+
+.historia-descricao p {
+    font-size: clamp(14px, 1.3vw, 18px);
+    line-height: 1.5;
+}
+
+.historia-item:nth-child(even) {
+    grid-template-areas: "descricao point imagem";
+}
+
+.historia-timeline::before {
+    content: "";
+    position: absolute;
+    top: 150px;
+    bottom: 100px;
+    left: 50%;
+    width: 1px;
+    transform: translateX(-50%);
+    background: var(--terracota);
+}
+
+@media (max-width: 800px) {
+
+    .historia {
+        padding: 60px 16px;
+        gap: 40px;
+    }
+
+    .historia-timeline {
+        align-items: stretch;
+        gap: 40px;
+    }
+
+    .historia-item, .historia-item:nth-child(even) {
+        display: grid;
+        grid-template-columns: 35px 1fr;
+        grid-template-areas:
+            "point imagem"
+            ". descricao";
+        gap: 10px;
+        align-items: start;
+    }
+
+    .historia-imagem {
+        grid-area: imagem;
+    }
+
+    .historia-descricao {
+        grid-area: descricao;
+        padding-top: 10px;
+    }
+
+    .point {
+        grid-area: point;
+        height: 35px;
+    }
+
+    .historia-item img {
+        height: 220px;
+        border-radius: 22px;
+    }
+
+    .historia-timeline::before {
+        top: 17px;
+        bottom: 60px;
+        left: 17px;
+        transform: none;
+    }
+}

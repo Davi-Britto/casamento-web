@@ -1,0 +1,81 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-family: "Cormorant Garamond", serif;
+}
+
+.section-padrao{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 60px 24px;
+    gap: 50px;
+}
+
+.section-padrao p {
+    font-family: var(--fonte-primaria);
+    font-size: clamp(14px, 1.2vw, 17px);
+}
+
+.section-padrao h1 {
+    font-family: var(--fonte-secundaria);
+    color: var(--marrom);
+}
+
+.cabecalho {
+    text-align: center;
+}
+
+.subtitulo {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--terracota);
+    font-size: clamp(14px, 1.5vw, 20px);
+}
+
+.cabecalho h1 {
+    font-size: clamp(30px, 3.5vw, 40px);
+}
+
+.cabecalho p {
+    margin-top: 10px;
+}
+
+[appScrollReveal] {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(4px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        filter 0.8s ease;
+}
+
+[appScrollReveal].revelado {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+}
+
+:root {
+    --fonte-titulo: "Monsieur La Doulaise", cursive;
+    --fonte-primaria: "Lekton", monospace;
+    --fonte-secundaria: "Italiana", sans-serif;
+
+    --cor-texto-primaria: #fffbf7;
+    --cor-texto-secundaria: #ffead2;
+    --cor-texto-terceira: #6e5c4d;
+    --terracota: #c23a04;
+    --marrom: #49200F;
+}

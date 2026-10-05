@@ -1,0 +1,121 @@
+.section-padrinhos {
+    background: #fcf4ec;
+}
+
+.carrossel {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.galeria-padrinhos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: clamp(20px, 2vw, 30px) clamp(10px, 1.5vw, 16px);
+    width: 100%;
+    transition: opacity 0.4s ease;
+}
+
+.galeria-padrinhos.trocando {
+    opacity: 0;
+}
+
+.seta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: clamp(30px, 3vw, 40px);
+    height: clamp(30px, 3vw, 40px);
+    border: none;
+    background: transparent;
+    color: var(--marrom);
+    cursor: pointer;
+}
+
+.seta:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.indicadores {
+    display: flex;
+    gap: 8px;
+}
+
+.indicadores span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #cfc0b0;
+}
+
+.indicadores span.ativo {
+    background: var(--terracota);
+}
+
+.padrinhos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+}
+
+.moldura {
+    width: clamp(110px, 13vw, 190px);
+    height: clamp(110px, 13vw, 190px);
+    background-color: var(--terracota);
+    border-radius: 50%;
+    padding: 2px;
+    transition: 0.5s;
+}
+
+.moldura:hover {
+    background-color: #ff4800;
+    transform: rotate(4deg) scale(1.05);
+}
+
+.padrinhos img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.padrinhos h3 {
+    font-family: var(--fonte-secundaria);
+    font-size: clamp(13px, 1.5vw, 18px);
+    text-align: center;
+}
+
+.galeria-damas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    max-width: 1200px;
+    gap: clamp(10px, 1.5vw, 16px);
+    max-height: 250px;
+}
+
+@media (max-width: 600px) {
+
+    .galeria-padrinhos {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+    }
+
+    .galeria-damas {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+    }
+
+    .galeria-damas .padrinhos:last-child {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: 50%;
+    }
+
+}

@@ -1,0 +1,50 @@
+<section class="section-padrao galeria-section">
+    <div class="cabecalho">
+        <p class="subtitulo">Momentos eternizados</p>
+        <h1>Pré-Wedding</h1>
+    </div>
+
+    <div class="galeria" appScrollReveal>
+        <img class="imagem-1" src="images/01_casal_abraco.jpg" alt="" (click)="abrirImagem(0)">
+        <img class="imagem-2" src="images/02_casal_caminhando.jpg" alt="" (click)="abrirImagem(1)">
+        <img class="imagem-3" src="images/03_noiva_sozinha.jpg" alt="" (click)="abrirImagem(2)">
+        <img class="imagem-4" src="images/04_maos_entrelacadas.jpg" alt="" (click)="abrirImagem(3)">
+        <img class="imagem-5" src="images/05_silhueta_por_do_sol.jpg" alt="" (click)="abrirImagem(4)">
+        <img class="imagem-6" src="images/06_casal_abraco_2.jpg" alt="" (click)="abrirImagem(5)">
+        <img class="imagem-7" src="images/02_casal_caminhando.jpg" alt="" (click)="abrirImagem(6)">
+        <img class="imagem-8" src="images/03_noiva_sozinha.jpg" alt="" (click)="abrirImagem(7)">
+        <img class="imagem-9" src="images/04_maos_entrelacadas.jpg" alt="" (click)="abrirImagem(8)">
+        <img class="imagem-10" src="images/01_casal_abraco.jpg" alt="" (click)="abrirImagem(9)">
+        <img class="imagem-11" src="images/02_casal_caminhando.jpg" alt="" (click)="abrirImagem(10)">
+    </div>
+
+    @if (imagemAtual !== null) {
+    <div class="galeria-modal">
+
+        <button class="fechar" type="button" (click)="fecharImagem()">
+            <span class="material-symbols-outlined">
+                close_small
+            </span>
+        </button>
+
+        <button class="seta seta-esquerda" type="button" (click)="imagemAnterior()">
+            <span class="material-symbols-outlined">
+                chevron_left
+            </span>
+        </button>
+
+        <img class="imagem-modal" [src]="imagens[imagemAtual]" alt="">
+
+        <button class="seta seta-direita" type="button" (click)="imagemProxima()">
+            <span class="material-symbols-outlined">
+                chevron_right
+            </span>
+        </button>
+
+        <span class="contador">
+            {{ imagemAtual + 1 }} / {{ imagens.length }}
+        </span>
+
+    </div>
+    }
+</section>

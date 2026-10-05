@@ -1,0 +1,121 @@
+.confirmacao-section {
+    position: relative;
+    min-height: 100svh;
+    overflow: hidden;
+}
+
+.confirmacao-section::before {
+    content: "";
+    position: absolute;
+    inset: -20px;
+    background-image: url('/images/home-background.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);
+    transform: scale(1.05);
+}
+
+.confirmacao-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(73, 32, 15, 0.45);
+}
+
+.confirmacao-section .cabecalho {
+    position: relative;
+    z-index: 1;
+}
+
+.confirmacao-section .subtitulo {
+    color: var(--cor-texto-secundaria);
+}
+
+.confirmacao-section .cabecalho h1 {
+    color: var(--cor-texto-primaria);
+}
+
+.confirmacao {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    max-width: 700px;
+    background-color: #fcf4ec;
+    background: linear-gradient(123deg, rgba(250, 220, 190, 1) 0%, rgba(255, 249, 230, 1) 23%, rgba(255, 238, 212, 1) 50%, rgba(255, 242, 222, 1) 78%, rgba(255, 246, 240, 1) 99%);
+    box-shadow: -4px 6px 21px 3px rgba(0, 0, 0, 0.40);
+    padding: 15px;
+    border: 1px solid var(--cor-texto-terceira);
+}
+
+.lista-convidados {
+    display: flex;
+    flex-direction: column;
+}
+
+.convidado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0px;
+    border-bottom: 1px solid var(--cor-texto-terceira);
+}
+
+.acoes {
+    display: flex;
+    gap: 10px;
+}
+
+.acoes button {
+    display: flex;
+    align-items: center;
+    padding: 2px 10px;
+    background: transparent;
+    border: 1px solid rgb(207, 190, 166);
+    transition: 0.5s;
+    color: var(--cor-texto-terceira);
+    text-transform: uppercase;
+    font-size: 10px;
+}
+
+.acoes button:hover {
+    border: 1px solid rgb(26, 26, 26);
+}
+
+.acoes button.selecionado:first-child {
+    background-color: var(--terracota);
+    color: white;
+    border-color: var(--terracota);
+}
+
+.acoes button.selecionado:last-child {
+    background-color: var(--marrom);
+    color: white;
+    border-color: var(--marrom);
+}
+
+.card-rodape {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card-rodape button{
+    padding: 5px;
+    border: none;
+    color: white;
+    background-color: var(--terracota);
+    cursor: pointer;
+    transition: 0.5s;
+    font-family: var(--fonte-primaria);
+    font-size: clamp(10px, 2vw, 14px);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.card-rodape button:hover{
+    background-color: var(--marrom);
+}
