@@ -1,0 +1,5 @@
+export enum EPresenca {
+  PENDENTE = 'PENDENTE',
+  CONFIRMADO = 'CONFIRMADO',
+  RECUSADO = 'RECUSADO'
+}

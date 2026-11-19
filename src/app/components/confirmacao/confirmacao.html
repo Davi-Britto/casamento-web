@@ -4,57 +4,76 @@
         <h1>Você vem celebrar com a gente?</h1>
     </div>
 
-    <div class="confirmacao" appScrollReveal>
-        <div class="card-cabecalho">
-            <p>convite de</p>
-            <h1>Familia Bassi</h1>
-        </div>
+    @if (!grupoConvite) {
 
-        <div class="lista-convidados">
-            @for (convidado of convidados; track convidado.nome) {
-
-            <div class="convidado">
-
-                <p>{{ convidado.nome }}</p>
-
-                <div class="acoes">
-
-                    <button [class.selecionado]="convidado.resposta === 'vou'" (click)="convidado.resposta = 'vou'">
-
-                        <span class="material-symbols-outlined">
-                            check_small
-                        </span>
-
-                        Vou
-                    </button>
-
-                    <button [class.selecionado]="convidado.resposta === 'nao-vou'"
-                        (click)="convidado.resposta = 'nao-vou'">
-
-                        <span class="material-symbols-outlined">
-                            close_small
-                        </span>
-
-                        Não Vou
-                    </button>
-
-                </div>
-
+        <div class="confirmacao">
+            <div class="card-cabecalho">
+                <p>Convite</p>
+                <h1>Desculpe</h1>
             </div>
-            
-            }
+
+            <div class="card-rodape">
+                <p>
+                    Infelizmente você não está na lista,
+                    mas agradecemos o seu carinho!
+                </p>
+            </div>
         </div>
 
-        <div class="card-rodape">
-            <p>Você pode alterar sua resposta a qualquer momento até 30 dias antes do casamento.</p>
-            <button (click)="confirmarPresenca()">Confirmar</button>
+    } @else {
+        <div class="confirmacao" appScrollReveal>
+            @if (grupoConvite?.nomeExibicao != null) {
+                <div class="card-cabecalho">
+                    <p>convite de</p>
+                    <h1>{{ grupoConvite.nomeExibicao }}</h1>
+                </div>
+            }
+
+            <div class="lista-convidados">
+                @for (convidado of grupoConvite?.convidados; track convidado.id) {
+
+                    <div class="convidado">
+
+                        <p>{{ convidado.nome }}</p>
+
+                        <div class="acoes">
+
+                            <button [class.selecionado]="convidado.presenca === EPresenca.CONFIRMADO" (click)="alterarPresenca(convidado, EPresenca.CONFIRMADO)">
+
+                                <span class="material-symbols-outlined">
+                                    check_small
+                                </span>
+
+                                Vou
+                            </button>
+
+                            <button [class.selecionado]="convidado.presenca === EPresenca.RECUSADO" (click)="alterarPresenca(convidado, EPresenca.RECUSADO)">
+
+                                <span class="material-symbols-outlined">
+                                    close_small
+                                </span>
+
+                                Não Vou
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                }
+            </div>
+
+            <div class="card-rodape">
+                <p>Você pode alterar sua resposta a qualquer momento até 30 dias antes do casamento.</p>
+                <button (click)="confirmarPresenca()">Confirmar</button>
+            </div>
         </div>
-    </div>
+    }
 
     @if (popupAberto) {
-    <app-popup titulo="Presença confirmada!"
-        mensagem="Ficamos muito felizes em saber que você estará com a gente nesse dia especial."
-        (fechar)="fecharPopup()">
-    </app-popup>
+        <app-popup titulo="Presença confirmada!"
+            mensagem="Ficamos muito felizes em saber que você estará com a gente nesse dia especial."
+            (fechar)="fecharPopup()">
+        </app-popup>
     }
 </section>

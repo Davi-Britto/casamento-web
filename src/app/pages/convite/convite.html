@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header [token]="token"></app-header>
 
 <app-hero-convite></app-hero-convite>
 
@@ -12,6 +12,9 @@
 
 <app-presentes></app-presentes>
 
-<app-confirmacao></app-confirmacao>
+<app-confirmacao
+    [grupoConvite]="grupoConvite"
+    (confirmar)="alterarPresencas($event)">
+</app-confirmacao>
 
 <app-footer></app-footer>

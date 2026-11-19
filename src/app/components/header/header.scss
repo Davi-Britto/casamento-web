@@ -3,10 +3,9 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 10px 40px;
+    padding: 20px 40px;
     z-index: 100;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     backdrop-filter: blur(2px);
     color: var(--cor-texto-primaria);
@@ -29,6 +28,8 @@ header button {
     color: var(--cor-texto-primaria);
     cursor: pointer;
     transition: 0.5s;
+    display: flex;
+    align-items: flex-start;
 }
 
 header button:hover {
@@ -38,6 +39,12 @@ header button:hover {
 
 header button span{
     font-size: 20px;
+}
+
+.header_title{
+    display: flex;
+    width: 100%;
+    justify-content: center;
 }
 
 header h3 {

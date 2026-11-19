@@ -31,9 +31,9 @@
         0 5px 20px rgba(91, 47, 30, 0.12);
 
     transition:
-        transform 0.3s ease,
-        filter 0.3s ease;
-    filter: brightness(0.75);
+        transform 0.3s ease;
+        // filter 0.3s ease;
+    // filter: brightness(1);
     cursor: pointer;
 }
 

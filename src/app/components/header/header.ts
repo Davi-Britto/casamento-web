@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 import { Router } from "@angular/router";
 
 @Component({
@@ -9,8 +9,9 @@ import { Router } from "@angular/router";
 })
 export class Header {
 
-  constructor(private router: Router) { }
+  @Input() token: string | null = null;
 
+  constructor(private router: Router) { }
 
   scrolled = false;
 
@@ -20,6 +21,10 @@ export class Header {
   }
 
   goToHome() {
-    this.router.navigate(['/']);
+    if (this.token) {
+      this.router.navigate(['/', this.token]);
+    } else {
+      this.router.navigate(['/']);
+    }
   }
 }
