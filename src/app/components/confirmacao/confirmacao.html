@@ -4,7 +4,7 @@
         <h1>Você vem celebrar com a gente?</h1>
     </div>
 
-    @if (!grupoConvite) {
+    @if (grupoConvite === null) {
 
         <div class="confirmacao">
             <div class="card-cabecalho">
@@ -22,7 +22,7 @@
 
     } @else {
         <div class="confirmacao" appScrollReveal>
-            @if (grupoConvite?.nomeExibicao != null) {
+            @if (grupoConvite.nomeExibicao !== null) {
                 <div class="card-cabecalho">
                     <p>convite de</p>
                     <h1>{{ grupoConvite.nomeExibicao }}</h1>
@@ -30,7 +30,7 @@
             }
 
             <div class="lista-convidados">
-                @for (convidado of grupoConvite?.convidados; track convidado.id) {
+                @for (convidado of grupoConvite.convidados; track convidado.id) {
 
                     <div class="convidado">
 
@@ -38,7 +38,9 @@
 
                         <div class="acoes">
 
-                            <button [class.selecionado]="convidado.presenca === EPresenca.CONFIRMADO" (click)="alterarPresenca(convidado, EPresenca.CONFIRMADO)">
+                            <button
+                                [class.selecionado]="convidado.presenca === EPresenca.CONFIRMADO"
+                                (click)="alterarPresenca(convidado, EPresenca.CONFIRMADO)">
 
                                 <span class="material-symbols-outlined">
                                     check_small
@@ -47,7 +49,9 @@
                                 Vou
                             </button>
 
-                            <button [class.selecionado]="convidado.presenca === EPresenca.RECUSADO" (click)="alterarPresenca(convidado, EPresenca.RECUSADO)">
+                            <button
+                                [class.selecionado]="convidado.presenca === EPresenca.RECUSADO"
+                                (click)="alterarPresenca(convidado, EPresenca.RECUSADO)">
 
                                 <span class="material-symbols-outlined">
                                     close_small
@@ -71,7 +75,8 @@
     }
 
     @if (popupAberto) {
-        <app-popup titulo="Presença confirmada!"
+        <app-popup
+            titulo="Presença confirmada!"
             mensagem="Ficamos muito felizes em saber que você estará com a gente nesse dia especial."
             (fechar)="fecharPopup()">
         </app-popup>
