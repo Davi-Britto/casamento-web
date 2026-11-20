@@ -1,14 +1,14 @@
-.galeria-section{
+.galeria-section {
     background: #fcf4ec;
 }
 
 .galeria {
     width: 100%;
-    max-width: 1200px;
+    max-width: 950px;
 
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 180px);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(4, 150px);
 
     grid-template-areas:
         "imagem1 imagem2 imagem2 imagem3"
@@ -16,89 +16,50 @@
         "imagem6 imagem7 imagem8 imagem9"
         "imagem10 imagem10 imagem11 imagem9";
 
-    gap: 16px;
+    gap: 10px;
 }
 
 .galeria img {
     width: 100%;
     height: 100%;
     min-width: 0;
-
     object-fit: cover;
     border-radius: 3px;
 
-    box-shadow:
-        0 5px 20px rgba(91, 47, 30, 0.12);
+    box-shadow: 0 4px 14px rgba(91, 47, 30, 0.10);
 
-    transition:
-        transform 0.3s ease;
-        // filter 0.3s ease;
-    // filter: brightness(1);
+    transition: transform 0.3s ease;
     cursor: pointer;
 }
 
-.imagem-1 {
-    grid-area: imagem1;
-}
-
-.imagem-2 {
-    grid-area: imagem2;
-}
-
-.imagem-3 {
-    grid-area: imagem3;
-}
-
-.imagem-4 {
-    grid-area: imagem4;
-}
-
-.imagem-5 {
-    grid-area: imagem5;
-}
-
-.imagem-6 {
-    grid-area: imagem6;
-}
-
-.imagem-7 {
-    grid-area: imagem7;
-}
-
-.imagem-8 {
-    grid-area: imagem8;
-}
-
-.imagem-9 {
-    grid-area: imagem9;
-}
-
-.imagem-10 {
-    grid-area: imagem10;
-}
-
-.imagem-11 {
-    grid-area: imagem11;
-}
+.imagem-1 { grid-area: imagem1; }
+.imagem-2 { grid-area: imagem2; }
+.imagem-3 { grid-area: imagem3; }
+.imagem-4 { grid-area: imagem4; }
+.imagem-5 { grid-area: imagem5; }
+.imagem-6 { grid-area: imagem6; }
+.imagem-7 { grid-area: imagem7; }
+.imagem-8 { grid-area: imagem8; }
+.imagem-9 { grid-area: imagem9; }
+.imagem-10 { grid-area: imagem10; }
+.imagem-11 { grid-area: imagem11; }
 
 .galeria img:hover {
     transform: scale(1.02);
-    filter: brightness(1.25);
-}
-
-.galeria img {
-    cursor: pointer;
+    filter: brightness(1.10);
 }
 
 .galeria-modal {
     position: fixed;
     inset: 0;
     z-index: 1000;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     background: rgba(19, 19, 19, 0.92);
-    padding: 50px;
+    padding: 40px;
 }
 
 .imagem-modal {
@@ -107,22 +68,26 @@
     max-width: 90%;
     max-height: 85%;
     object-fit: contain;
-    border-radius: 8px;
+    border-radius: 6px;
 }
 
 .fechar {
     position: absolute;
-    top: 25px;
-    right: 30px;
-    width: 40px;
-    height: 40px;
+    top: 20px;
+    right: 24px;
+
+    width: 36px;
+    height: 36px;
+
     border: none;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.15);
     color: white;
-    font-size: 40px;
+
+    font-size: 32px;
     line-height: 1;
     cursor: pointer;
+
     transition: background 0.3s ease;
 }
 
@@ -132,18 +97,23 @@
 
 .seta {
     position: absolute;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+
+    width: 36px;
+    height: 36px;
+
     border: none;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.15);
     color: white;
-    font-size: 45px;
+
+    font-size: 36px;
     line-height: 1;
     cursor: pointer;
+
     transition: background 0.3s ease;
 }
 
@@ -152,29 +122,26 @@
 }
 
 .seta-esquerda {
-    left: 30px;
+    left: 24px;
 }
 
 .seta-direita {
-    right: 30px;
+    right: 24px;
 }
 
 .contador {
     position: absolute;
-    bottom: 25px;
+    bottom: 20px;
 
     color: white;
-
     font-family: var(--fonte-primaria);
-    font-size: 18px;
+    font-size: 14px;
 }
 
 @media (max-width: 800px) {
-
     .galeria {
-        grid-template-columns: repeat(2, 1fr);
-
-        grid-template-rows: repeat(7, 160px);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(7, 145px);
 
         grid-template-areas:
             "imagem1 imagem1"
@@ -185,34 +152,49 @@
             "imagem9 imagem9"
             "imagem10 imagem11";
 
-        gap: 10px;
+        gap: 8px;
     }
 
     .galeria-modal {
-        padding: 20px;
+        padding: 16px;
     }
 
     .imagem-modal {
         max-width: 100%;
-        max-height: 80%;
+        max-height: 78%;
     }
 
     .seta {
-        width: 45px;
-        height: 45px;
-        font-size: 35px;
+        width: 34px;
+        height: 34px;
+        font-size: 30px;
     }
 
     .seta-esquerda {
-        left: 10px;
+        left: 8px;
     }
 
     .seta-direita {
-        right: 10px;
+        right: 8px;
     }
 
     .fechar {
-        top: 15px;
-        right: 15px;
+        top: 12px;
+        right: 12px;
+        width: 34px;
+        height: 34px;
+        font-size: 30px;
+    }
+
+    .contador {
+        bottom: 16px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 380px) {
+    .galeria {
+        grid-template-rows: repeat(7, 130px);
+        gap: 7px;
     }
 }

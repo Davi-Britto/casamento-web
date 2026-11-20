@@ -2,8 +2,10 @@
     <div class="cabecalho">
         <p class="subtitulo">Lista de Presentes</p>
         <h1>Presentear é opcional, sua presença é o essencial!</h1>
-        <p>Se quiser nos presentear, escolha um item simbólico e envie por Pix. Cada cota vira uma lembrança da nossa
-            nova vida juntos.</p>
+        <p>
+            Se quiser nos presentear, escolha um item simbólico e envie por Pix.
+            Cada cota vira uma lembrança da nossa nova vida juntos.
+        </p>
     </div>
 
     <div class="presentes">
@@ -14,6 +16,7 @@
                 <h4>R$ 200,00</h4>
             </div>
         </div>
+
         <div class="card">
             <img src="images/presentes/meme2.jpg" alt="">
             <div class="card-texto">
@@ -21,6 +24,7 @@
                 <h4>R$ 605,01</h4>
             </div>
         </div>
+
         <div class="card">
             <img src="images/presentes/meme3.jpg" alt="">
             <div class="card-texto">
@@ -28,13 +32,15 @@
                 <h4>R$ 430,00</h4>
             </div>
         </div>
+
         <div class="card">
-            <img src="images/presentes/meme4.png" alt="">
+            <img src="images/presentes/meme4.webp" alt="">
             <div class="card-texto">
                 <p>Pijama do noivo</p>
                 <h4>R$ 123,45</h4>
             </div>
         </div>
+
         <div class="card">
             <img src="images/presentes/meme5.jpg" alt="">
             <div class="card-texto">
@@ -42,6 +48,7 @@
                 <h4>R$ 786,29</h4>
             </div>
         </div>
+
         <div class="card">
             <img src="images/presentes/meme6.jpg" alt="">
             <div class="card-texto">
@@ -49,6 +56,7 @@
                 <h4>R$ 329,99</h4>
             </div>
         </div>
+
         <div class="card">
             <img src="images/presentes/meme7.jpg" alt="">
             <div class="card-texto">
@@ -56,6 +64,7 @@
                 <h4>R$ 67,67</h4>
             </div>
         </div>
+
         <div class="card">
             <img src="images/presentes/meme8.jpg" alt="">
             <div class="card-texto">
@@ -63,27 +72,108 @@
                 <h4>R$ 2.000,00</h4>
             </div>
         </div>
+
+        <div class="lista-casa">
+            <div class="lista-casa-info">
+                <span class="material-symbols-outlined">home</span>
+                <div>
+                    <h3>E a nossa casa nova?</h3>
+                    <p>Confira algumas sugestões para nosso novo lar.</p>
+                </div>
+            </div>
+
+            <button class="btn-lista" type="button" (click)="abrirLista()">
+                <span class="material-symbols-outlined">redeem</span>
+                Lista de presentes
+            </button>
+        </div>
+
         <div class="card pix">
-            <img src="images/presentes/qrcode.jpg" alt="">
+            <img src="images/presentes/qrcode.jpg" alt="QR Code Pix">
+
             <div class="pix-info">
                 <h1>Chave Pix</h1>
                 <h4>davi.m.britto@gmail.com</h4>
-                <button (click)="copiarPix()">
+
+                <button type="button" (click)="copiarPix()">
                     <span class="material-symbols-outlined">
                         content_copy
                     </span>
                     <p>Copiar Chave Pix</p>
                 </button>
             </div>
-
         </div>
     </div>
 </section>
 
 @if (notificacaoAberta) {
-    <app-notificacao 
-        titulo="Chave PIX copiada!" 
+    <app-notificacao
+        titulo="Chave PIX copiada!"
         mensagem="A chave foi copiada para sua área de transferência."
         icone="content_copy">
     </app-notificacao>
+}
+
+@if (modalListaAberto) {
+        <div class="lista-modal" (click)="fecharLista()">
+
+            <div class="lista-conteudo" (click)="$event.stopPropagation()">
+
+                <button
+                    class="lista-fechar"
+                    type="button"
+                    aria-label="Fechar lista"
+                    (click)="fecharLista()">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+
+                <div class="lista-cabecalho">
+                    <p class="subtitulo">Nosso novo lar</p>
+                    <h2>Nossa casa nova</h2>
+                    <p>Pequenos presentes para começar uma grande história ❤️</p>
+                </div>
+
+                <div class="lista-progresso">
+                    <div>
+                        <span>Presentes recebidos</span>
+                        <span>{{ totalRecebidos }}/{{ presentesCasa.length }}</span>
+                    </div>
+
+                    <div class="progresso-fundo">
+                        <div
+                            class="progresso-valor"
+                            [style.width.%]="presentesCasa.length ? totalRecebidos / presentesCasa.length * 100 : 0">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lista-itens">
+                    @for (presente of presentesCasa; track presente.nome) {
+                        <label class="presente-item">
+                            <div>
+                                <p [class.recebido]="presente.recebido">
+                                    {{ presente.nome }}
+                                </p>
+                                <span>{{ presente.categoria }}</span>
+                            </div>
+
+                            <input
+                                type="checkbox"
+                                [checked]="presente.recebido"
+                                (change)="presente.recebido = !presente.recebido">
+
+                            <span class="presente-check">
+                                <span class="material-symbols-outlined">check</span>
+                            </span>
+                        </label>
+                    }
+                </div>
+
+                <p class="lista-rodape">
+                    Os itens marcados já foram presenteados.
+                    Obrigado por fazerem parte desse momento!
+                </p>
+
+            </div>
+        </div>
     }

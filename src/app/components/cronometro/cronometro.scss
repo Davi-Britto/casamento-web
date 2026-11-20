@@ -1,3 +1,4 @@
+
 :host {
     display: block;
     width: 100%;
@@ -6,8 +7,8 @@
 .cronometro {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
 }
 
 .tempo {
@@ -15,17 +16,45 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 80px;
-
+    height: 64px;
     background: rgba(209, 94, 17, 0.12);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid #f1d2a444;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.16);
     font-family: var(--fonte-secundaria);
-
 }
 
 .tempo h1 {
-    font-size: clamp(24px, 7vw, 40px);
+    margin: 0;
+    font-size: clamp(20px, 4vw, 30px);
+    line-height: 1;
+}
+
+@media (max-width: 800px) {
+    .cronometro {
+        gap: 5px;
+    }
+
+    .tempo {
+        height: 56px;
+    }
+
+    .tempo h1 {
+        font-size: clamp(18px, 6vw, 26px);
+    }
+}
+
+@media (max-width: 380px) {
+    .cronometro {
+        gap: 4px;
+    }
+
+    .tempo {
+        height: 50px;
+    }
+
+    .tempo h1 {
+        font-size: 19px;
+    }
 }

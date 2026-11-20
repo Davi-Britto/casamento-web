@@ -15,23 +15,23 @@ export class Padrinhos implements OnInit, OnDestroy {
   private intervalo!: ReturnType<typeof setInterval>;
 
   padrinhos = [
-    { nome: 'Laura e Bordon', foto: 'images/padrinhos/casal1.jpg' },
-    { nome: 'Alice e Abner', foto: 'images/padrinhos/casal2.jpg' },
-    { nome: 'Débora e Ricardo', foto: 'images/padrinhos/casal3.jpg' },
-    { nome: 'Rhaissa e Gabriel', foto: 'images/padrinhos/casal4.jpg' },
-    { nome: 'Jhonas e Vic', foto: 'images/padrinhos/casal5.jpg' },
-    { nome: 'Tia Suh', foto: 'images/padrinhos/madrinha6.jpg' },
-    { nome: 'Maylon', foto: 'images/padrinhos/padrinho7.jpg' },
-    { nome: 'Tia Grazi e Tio Flávio', foto: 'images/padrinhos/casal8.jpg' },
+    { nome: 'Laura e Bordon', foto: 'images/padrinhos/casal1.webp' },
+    { nome: 'Alice e Abner', foto: 'images/padrinhos/casal2.webp' },
+    { nome: 'Débora e Ricardo', foto: 'images/padrinhos/casal3.webp' },
+    { nome: 'Rhaissa e Gabriel', foto: 'images/padrinhos/casal4.webp' },
+    { nome: 'Jhonas e Vic', foto: 'images/padrinhos/casal5.webp' },
+    { nome: 'Tia Suh', foto: 'images/padrinhos/madrinha6.webp' },
+    { nome: 'Maylon', foto: 'images/padrinhos/padrinho7.webp' },
+    { nome: 'Tia Grazi e Tio Flávio', foto: 'images/padrinhos/casal8.webp' },
 
-    { nome: 'Tia Nana e Tio Dani', foto: 'images/padrinhos/casal9.jpg' },
-    { nome: 'Bianca e Paulo', foto: 'images/padrinhos/casal10.jpg' },
-    { nome: 'Ingrid e Tio Russo', foto: 'images/padrinhos/casal11.jpg' },
-    { nome: 'Isabelle e Nickolas', foto: 'images/padrinhos/casal12.jpg' },
-    { nome: 'Esther', foto: 'images/padrinhos/madrinha13.jpg' },
-    { nome: 'Pedro', foto: 'images/padrinhos/padrinho14.jpg' },
-    { nome: 'Tia Lela e Tio Paulo', foto: 'images/padrinhos/casal15.jpg' },
-    { nome: 'Tia Gabi e Rodrigo', foto: 'images/padrinhos/casal16.jpg' }
+    { nome: 'Tia Nana e Tio Dani', foto: 'images/padrinhos/casal9.webp' },
+    { nome: 'Bianca e Paulo', foto: 'images/padrinhos/casal10.webp' },
+    { nome: 'Ingrid e Tio Russo', foto: 'images/padrinhos/casal11.webp' },
+    { nome: 'Isabelle e Nickolas', foto: 'images/padrinhos/casal12.webp' },
+    { nome: 'Esther', foto: 'images/padrinhos/madrinha13.webp' },
+    { nome: 'Pedro', foto: 'images/padrinhos/padrinho14.webp' },
+    { nome: 'Tia Lela e Tio Paulo', foto: 'images/padrinhos/casal15.webp' },
+    { nome: 'Tia Gabi e Rodrigo', foto: 'images/padrinhos/casal16.webp' }
   ];
 
   get padrinhosVisiveis() {

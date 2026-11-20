@@ -2,33 +2,37 @@
     background: #F4E8DC;
 }
 
-.historia-timeline{
+.historia-timeline {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 1200px;
-    gap: 30px;
+    max-width: 780px;
+    gap: 20px;
 }
 
 .historia-item {
     display: grid;
-    grid-template-columns: 1fr 60px 1fr;
+    grid-template-columns: minmax(0, 1fr) 32px minmax(0, 1fr);
     grid-template-areas: "imagem point descricao";
     align-items: center;
-    gap: 30px;
+    gap: 14px;
+}
+
+.historia-imagem {
+    grid-area: imagem;
+    width: 100%;
 }
 
 .historia-imagem img {
+    display: block;
     width: 100%;
-    height: 500px;
-    border-radius: 30px;
+    height: 360px;
+    border-radius: 14px;
     object-fit: cover;
-    box-shadow:
-        0 5px 30px rgba(91, 47, 30, 0.20),
-        0 5px 10px rgba(91, 47, 30, 0.12);
-    grid-area: imagem;
+    object-position: center 25%;
+    box-shadow: 0 4px 16px rgba(91, 47, 30, .14);
 }
 
 .point {
@@ -43,7 +47,7 @@
 
 .point span {
     color: var(--terracota);
-    font-size: clamp(38px, 5vw, 60px);
+    font-size: 26px;
     font-variation-settings: 'FILL' 1;
     background-color: #F4E8DC;
 }
@@ -51,17 +55,18 @@
 .historia-descricao {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
     grid-area: descricao;
 }
 
 .historia-descricao h1 {
-    font-size: clamp(24px, 2.5vw, 32px);
+    font-size: 19px;
+    line-height: 1.2;
 }
 
 .historia-descricao p {
-    font-size: clamp(14px, 1.3vw, 18px);
-    line-height: 1.5;
+    font-size: 12px;
+    line-height: 1.45;
 }
 
 .historia-item:nth-child(even) {
@@ -71,33 +76,33 @@
 .historia-timeline::before {
     content: "";
     position: absolute;
-    top: 150px;
-    bottom: 100px;
+    top: 90px;
+    bottom: 70px;
     left: 50%;
     width: 1px;
     transform: translateX(-50%);
     background: var(--terracota);
 }
 
+/* TABLETS E CELULARES */
 @media (max-width: 800px) {
-
     .historia {
-        padding: 60px 16px;
-        gap: 40px;
+        padding: 28px 12px;
     }
 
     .historia-timeline {
         align-items: stretch;
-        gap: 40px;
+        gap: 20px;
     }
 
-    .historia-item, .historia-item:nth-child(even) {
+    .historia-item,
+    .historia-item:nth-child(even) {
         display: grid;
-        grid-template-columns: 35px 1fr;
+        grid-template-columns: 24px minmax(0, 1fr);
         grid-template-areas:
             "point imagem"
             ". descricao";
-        gap: 10px;
+        gap: 7px;
         align-items: start;
     }
 
@@ -105,25 +110,78 @@
         grid-area: imagem;
     }
 
+    .historia-imagem img {
+        width: 100%;
+        height: 340px;
+        object-fit: cover;
+        object-position: center 25%;
+        border-radius: 12px;
+    }
+
     .historia-descricao {
         grid-area: descricao;
-        padding-top: 10px;
+        padding-top: 4px;
+        gap: 4px;
+    }
+
+    .historia-descricao h1 {
+        font-size: 18px;
+    }
+
+    .historia-descricao p {
+        font-size: 12px;
+        line-height: 1.4;
     }
 
     .point {
         grid-area: point;
-        height: 35px;
+        height: 24px;
     }
 
-    .historia-item img {
-        height: 220px;
-        border-radius: 22px;
+    .point span {
+        font-size: 24px;
     }
 
     .historia-timeline::before {
-        top: 17px;
-        bottom: 60px;
-        left: 17px;
+        top: 12px;
+        bottom: 40px;
+        left: 12px;
         transform: none;
+    }
+}
+
+/* CELULARES PEQUENOS */
+@media (max-width: 380px) {
+    .historia {
+        padding: 24px 10px;
+    }
+
+    .historia-timeline {
+        gap: 18px;
+    }
+
+    .historia-item,
+    .historia-item:nth-child(even) {
+        grid-template-columns: 22px minmax(0, 1fr);
+    }
+
+    .historia-imagem img {
+        height: 320px;
+    }
+
+    .historia-descricao h1 {
+        font-size: 17px;
+    }
+
+    .historia-descricao p {
+        font-size: 11px;
+    }
+
+    .point span {
+        font-size: 22px;
+    }
+
+    .historia-timeline::before {
+        left: 11px;
     }
 }

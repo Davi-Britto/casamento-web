@@ -10,17 +10,17 @@ import { ScrollReveal } from '../../shared/scroll-reveal';
 export class Galeria {
 
   imagens = [
-    'images/pre_wedding1.jpg',
-    'images/pre_wedding2.jpg',
-    'images/pre_wedding3.jpg',
-    'images/pre_wedding4.jpg',
-    'images/pre_wedding5.jpg',
-    'images/pre_wedding6.jpg',
-    'images/pre_wedding7.jpg',
-    'images/pre_wedding8.jpg',
-    'images/pre_wedding9.jpg',
-    'images/pre_wedding10.jpg',
-    'images/pre_wedding11.jpg'
+    'images/pre_wedding1.webp',
+    'images/pre_wedding2.webp',
+    'images/pre_wedding3.webp',
+    'images/pre_wedding4.webp',
+    'images/pre_wedding5.webp',
+    'images/pre_wedding6.webp',
+    'images/pre_wedding7.webp',
+    'images/pre_wedding8.webp',
+    'images/pre_wedding9.webp',
+    'images/pre_wedding10.webp',
+    'images/pre_wedding11.webp'
   ];
 
   imagemAtual: number | null = null;

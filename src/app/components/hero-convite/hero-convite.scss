@@ -8,6 +8,7 @@
 
 .hero-convite img {
     position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -18,10 +19,12 @@
     position: absolute;
     inset: 0;
 
-    background: linear-gradient(to bottom,
-            rgba(91, 47, 30, 0.45),
-            rgba(91, 47, 30, 0.20),
-            rgba(91, 47, 30, 0.80));
+    background: linear-gradient(
+        to bottom,
+        rgba(91, 47, 30, 0.45),
+        rgba(91, 47, 30, 0.20),
+        rgba(91, 47, 30, 0.80)
+    );
 
     pointer-events: none;
 }
@@ -37,11 +40,12 @@
     align-items: center;
     justify-content: space-between;
 
-    padding: clamp(90px, 10vw, 120px) clamp(16px, 4vw, 40px) clamp(30px, 5vw, 50px);
+    padding: clamp(90px, 8vh, 110px) 24px clamp(24px, 4vh, 40px);
     gap: 20px;
 
     opacity: 0;
     transform: scale(0.98);
+
     transition:
         opacity 0.8s ease,
         transform 0.8s ease;
@@ -61,8 +65,8 @@
     font-family: var(--fonte-primaria);
     text-transform: uppercase;
     color: var(--cor-texto-secundaria);
-    font-size: clamp(12px, 1.5vw, 18px);
-    letter-spacing: clamp(1px, 0.3vw, 2px);
+    font-size: clamp(12px, 1.1vw, 15px);
+    letter-spacing: clamp(1px, 0.15vw, 1.8px);
     line-height: 1.4;
 }
 
@@ -72,42 +76,42 @@
     align-items: center;
     text-align: center;
     width: 100%;
-    max-width: 800px;
-    gap: clamp(8px, 1.5vw, 16px);
+    max-width: 760px;
+    gap: clamp(8px, 1.2vw, 14px);
 }
 
 .info-meio h1 {
     font-family: var(--fonte-titulo);
     font-weight: 400;
     font-style: normal;
-    font-size: clamp(50px, 12vw, 120px);
+    font-size: clamp(48px, 7vw, 96px);
     line-height: 1;
 }
 
 .info-meio p {
     font-family: var(--fonte-primaria);
     color: var(--cor-texto-secundaria);
-    font-size: clamp(12px, 1.5vw, 18px);
+    font-size: clamp(13px, 1.2vw, 16px);
     line-height: 1.5;
 }
 
 .info-meio .data-local {
     text-transform: uppercase;
-    font-size: clamp(12px, 1.4vw, 17px);
-    letter-spacing: clamp(0.5px, 0.2vw, 1.5px);
+    font-size: clamp(12px, 1.1vw, 15px);
+    letter-spacing: clamp(0.5px, 0.15vw, 1.5px);
 }
 
 .info-meio .material-symbols-outlined {
-    font-size: clamp(26px, 5vw, 60px);
+    font-size: clamp(26px, 3.5vw, 48px);
     color: var(--terracota);
     font-variation-settings: 'FILL' 1;
 }
 
 .info-meio .versiculo {
     font-family: var(--fonte-secundaria);
-    font-size: clamp(16px, 1.8vw, 22px);
-    line-height: 1.4;
-    max-width: 700px;
+    font-size: clamp(15px, 1.5vw, 20px);
+    line-height: 1.5;
+    max-width: 650px;
 }
 
 .info-baixo {
@@ -117,13 +121,13 @@
     align-items: center;
     text-align: center;
     width: 100%;
-    max-width: 800px;
-    gap: clamp(12px, 2vw, 20px);
+    max-width: 560px;
+    gap: clamp(10px, 1.5vw, 16px);
 }
 
 .info-baixo button {
     width: 100%;
-    padding: clamp(12px, 1.5vw, 15px);
+    padding: 13px 15px;
 
     background-color: var(--cor-texto-secundaria);
     border: none;
@@ -131,9 +135,9 @@
     transition: 0.5s;
 
     font-family: var(--fonte-primaria);
-    font-size: clamp(11px, 1.3vw, 14px);
+    font-size: 12px;
     text-transform: uppercase;
-    letter-spacing: clamp(1px, 0.3vw, 2px);
+    letter-spacing: 1.5px;
 }
 
 .info-baixo button:hover {
@@ -164,5 +168,74 @@
 
     100% {
         transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    .conteudo {
+        min-height: 100svh;
+        justify-content: center;
+        padding: 100px 20px 28px;
+        gap: 0;
+    }
+
+    .info-topo {
+        margin-bottom: auto;
+        padding-bottom: 24px;
+    }
+
+    .info-topo p {
+        font-size: 11px;
+        letter-spacing: 1px;
+    }
+
+    .info-meio {
+        gap: 8px;
+        flex-shrink: 0;
+    }
+
+    .info-meio h1 {
+        font-size: clamp(42px, 10vw, 58px);
+    }
+
+    .info-meio p {
+        font-size: 12px;
+    }
+
+    .info-meio .data-local {
+        font-size: 11px;
+    }
+
+    .info-meio .versiculo {
+        font-size: 14px;
+    }
+
+    .info-baixo {
+        max-width: 100%;
+        margin-top: auto;
+        padding-top: 24px;
+    }
+
+    .info-baixo button {
+        padding: 11px 12px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 380px) {
+    .conteudo {
+        padding: 90px 14px 22px;
+    }
+
+    .info-topo {
+        padding-bottom: 18px;
+    }
+
+    .info-meio h1 {
+        font-size: 40px;
+    }
+
+    .info-baixo {
+        padding-top: 18px;
     }
 }

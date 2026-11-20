@@ -1,11 +1,12 @@
+
 footer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    min-height: 500px;
-    padding: 60px 24px 25px;
+    min-height: 360px;
+    padding: 40px 20px 18px;
     background-color: var(--marrom);
     text-align: center;
     color: #f1d2a4;
@@ -16,19 +17,19 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
 }
 
 .mensagem p {
     margin: 0;
-    font-size: clamp(14px, 1.4vw, 16px);
-    line-height: 1.6;
+    font-size: clamp(12px, 1.1vw, 14px);
+    line-height: 1.5;
 }
 
 .mensagem h1 {
-    margin: 10px;
+    margin: 6px;
     font-family: var(--fonte-titulo);
-    font-size: clamp(40px, 9vw, 70px);
+    font-size: clamp(34px, 6vw, 56px);
     font-weight: 400;
     line-height: 1;
 }
@@ -37,22 +38,22 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
-    max-width: 500px;
+    gap: 6px;
+    max-width: 420px;
 }
 
 .versiculo p {
     font-family: var(--fonte-secundaria);
-    font-size: clamp(13px, 1.3vw, 17px);
+    font-size: clamp(12px, 1.1vw, 15px);
     font-style: italic;
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
 .versiculo span {
     font-family: var(--fonte-primaria);
-    font-size: clamp(11px, 1vw, 14px);
+    font-size: clamp(10px, .9vw, 12px);
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
 }
 
 .creditos {
@@ -60,18 +61,80 @@ footer {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding-top: 20px;
+    padding-top: 14px;
     border-top: 1px solid rgba(241, 210, 164, 0.25);
-    gap: 4px;
+    gap: 3px;
 }
 
 .creditos p {
     margin: 0;
     font-family: var(--fonte-primaria);
-    font-size: clamp(10px, 0.9vw, 12px);
+    font-size: clamp(9px, .8vw, 11px);
     opacity: 0.7;
 }
 
 .creditos strong {
     font-weight: 600;
+}
+
+@media (max-width: 800px) {
+    footer {
+        min-height: 300px;
+        padding: 30px 14px 14px;
+        gap: 24px;
+    }
+
+    .mensagem {
+        gap: 7px;
+    }
+
+    .mensagem p {
+        font-size: 12px;
+    }
+
+    .mensagem h1 {
+        font-size: clamp(32px, 9vw, 44px);
+    }
+
+    .versiculo {
+        max-width: 340px;
+        gap: 5px;
+    }
+
+    .versiculo p {
+        font-size: 12px;
+    }
+
+    .versiculo span {
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+
+    .creditos {
+        padding-top: 12px;
+    }
+
+    .creditos p {
+        font-size: 9px;
+    }
+}
+
+@media (max-width: 380px) {
+    footer {
+        min-height: 270px;
+        padding: 26px 10px 12px;
+        gap: 20px;
+    }
+
+    .mensagem h1 {
+        font-size: 30px;
+    }
+
+    .mensagem p {
+        font-size: 11px;
+    }
+
+    .versiculo p {
+        font-size: 11px;
+    }
 }

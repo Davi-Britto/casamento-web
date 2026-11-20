@@ -1,184 +1,232 @@
-.informacao-section{
+.informacao-section {
     background: #F4E8DC;
 }
 
-.informacao{
+.informacao {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 1200px;
-    gap: 20px;
+    max-width: 950px;
+    gap: 14px;
 }
 
-.card-container{
+.card-container {
     display: flex;
     width: 100%;
-    gap: 20px;
+    gap: 14px;
 }
 
-.card{
+.card {
     display: flex;
     flex-direction: column;
     width: 100%;
     background-color: #fcf4ec;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 5px 20px rgba(91, 47, 30, 0.12);
-    gap: 10px;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 4px 14px rgba(91, 47, 30, 0.10);
+    gap: 8px;
 }
 
-.card-titulo{
+.card-titulo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 }
 
 .card-titulo h1 {
-    font-size: clamp(22px, 2vw, 30px);
+    font-size: clamp(18px, 1.5vw, 22px);
 }
 
-.card-titulo span{
+.card-titulo span {
     color: rgb(255, 234, 220);
     border-radius: 50%;
-    padding: 6px;
+    padding: 5px;
     background-color: var(--terracota);
+    font-size: 20px;
 }
 
 .card-info p {
-    font-size: clamp(14px, 1.2vw, 17px);
+    font-size: clamp(12px, 1vw, 14px);
+    line-height: 1.5;
 }
 
-.cores{
+.cores {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 50px;
-    margin-top: 15px;
+    gap: 28px;
+    margin-top: 10px;
 }
 
-.cores .pessoas{
+.cores .pessoas {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
+    gap: 4px;
     font-family: var(--fonte-secundaria);
 }
 
 .pessoas h3 {
-    font-size: clamp(14px, 1.2vw, 18px);
-    text-align: center;
-}
-
-.pessoas p {
     font-size: clamp(12px, 1vw, 15px);
     text-align: center;
 }
 
-.cor{
-    width: 40px;
-    height: 40px;
+.pessoas p {
+    font-size: clamp(11px, .85vw, 13px);
+    text-align: center;
+}
+
+.cor {
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     border: 1px solid var(--cor-texto-terceira);
 }
 
-.branco{
+.branco {
     background-color: white;
 }
 
-.marrom{
+.marrom {
     background-color: var(--marrom);
 }
 
-.areia{
+.areia {
     background-color: rgb(255, 235, 210);
 }
 
-.terracota{
+.terracota {
     background-color: var(--terracota);
 }
 
-.esmeralda{
+.esmeralda {
     background-color: #126147;
 }
 
-.oliva{
+.oliva {
     background-color: #777705;
 }
 
-.preto{
-    background-color: rgb(46, 46, 46);
+.caramelo {
+    background-color: rgb(204, 144, 79);
 }
 
-.marrom-claro{
+.marrom-claro {
     background-color: rgb(128, 66, 31);
 }
 
-.amarelo{
+.amarelo {
     background-color: rgb(255, 238, 142);
 }
 
-.mapa{
-    border-radius: 40px;
-    padding: 0px;
-    height: 450px;
+.mapa {
+    border-radius: 25px;
+    padding: 0;
+    height: 360px;
 }
 
-iframe{
-    padding: 0px;
-    margin: 0px;
+iframe {
+    padding: 0;
+    margin: 0;
     width: 100%;
     height: 100%;
     border: none;
-    border-radius: 40px;
+    border-radius: 25px;
 }
 
 @media (max-width: 800px) {
-
-    section {
-        padding: 50px 16px;
-        gap: 35px;
+    .informacao-section {
+        padding: 32px 12px;
+        gap: 24px;
     }
 
     .informacao {
-        gap: 16px;
+        gap: 12px;
     }
 
     .card-container {
         flex-direction: column;
-        gap: 16px;
+        gap: 12px;
     }
 
     .card {
-        padding: 22px;
-        border-radius: 16px;
+        padding: 16px;
+        border-radius: 12px;
+        gap: 7px;
     }
 
     .card-titulo {
-        gap: 8px;
+        gap: 7px;
+    }
+
+    .card-titulo h1 {
+        font-size: 18px;
     }
 
     .card-titulo span {
-        padding: 5px;
-        font-size: 20px;
+        padding: 4px;
+        font-size: 18px;
+    }
+
+    .card-info p {
+        font-size: 12px;
     }
 
     .cores {
-        display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 25px 15px;
-        margin-top: 15px;
+        gap: 20px 10px;
+        margin-top: 10px;
     }
 
     .cor {
-        width: 36px;
-        height: 36px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .pessoas h3 {
+        font-size: 12px;
+    }
+
+    .pessoas p {
+        font-size: 11px;
     }
 
     .mapa {
-        height: 350px;
-        border-radius: 25px;
+        height: 280px;
+        border-radius: 18px;
     }
 
     iframe {
-        border-radius: 25px;
+        border-radius: 18px;
+    }
+}
+
+@media (max-width: 380px) {
+    .informacao-section {
+        padding: 28px 10px;
+    }
+
+    .card {
+        padding: 14px;
+    }
+
+    .card-titulo h1 {
+        font-size: 16px;
+    }
+
+    .card-info p {
+        font-size: 11px;
+    }
+
+    .cores {
+        gap: 18px 8px;
+    }
+
+    .cor {
+        width: 27px;
+        height: 27px;
+    }
+
+    .mapa {
+        height: 250px;
     }
 }
