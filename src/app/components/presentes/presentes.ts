@@ -1,6 +1,14 @@
+
 import { Component } from '@angular/core';
+import { finalize } from 'rxjs';
+
 import { ScrollReveal } from '../../shared/scroll-reveal';
 import { Notificacao } from '../notificacao/notificacao';
+
+import {
+  Presente,
+  PresenteService
+} from '../../services/presente.service';
 
 @Component({
   selector: 'app-presentes',
@@ -13,63 +21,149 @@ export class Presentes {
   chavePix = 'davi.m.britto@gmail.com';
 
   notificacaoAberta = false;
-
   modalListaAberto = false;
 
-  presentesCasa = [
-    { nome: 'Geladeira', categoria: 'Eletrodomésticos', recebido: false },
-    { nome: 'Fogão', categoria: 'Eletrodomésticos', recebido: false },
-    { nome: 'Máquina de lavar', categoria: 'Eletrodomésticos', recebido: false },
-    { nome: 'Micro-ondas', categoria: 'Eletrodomésticos', recebido: false },
-    { nome: 'Ferro a Vapor', categoria: 'Eletrodomésticos', recebido: false },
-    { nome: 'Ventilador', categoria: 'Eletrodomésticos', recebido: false },
-    { nome: 'TV', categoria: 'Eletrodomésticos', recebido: false },
-    { nome: 'Aspirado Portátil', categoria: 'Eletrodomésticos', recebido: false },
-    { nome: 'Sofá', categoria: 'Sala', recebido: false },
-    { nome: 'Sugar', categoria: 'Cozinha', recebido: false },
-    { nome: 'Cafeteira', categoria: 'Cozinha', recebido: false },
-    { nome: 'Espatula de Silicone', categoria: 'Cozinha', recebido: false },
-    { nome: 'Jogo de Sobremesa', categoria: 'Cozinha', recebido: false },
-    { nome: 'Jogo de Pratos', categoria: 'Cozinha', recebido: false }, 
-    { nome: 'Jogo de Panelas', categoria: 'Cozinha', recebido: false },
-    { nome: 'Liquidificador', categoria: 'Cozinha', recebido: false },
-    { nome: 'Panela', categoria: 'Cozinha', recebido: false },
-    { nome: 'Batedeira', categoria: 'Cozinha', recebido: false },
-    { nome: 'Batedeira', categoria: 'Cozinha', recebido: false },
-    { nome: 'Sanduicheira', categoria: 'Cozinha', recebido: false },
-    { nome: 'Air Fryer', categoria: 'Cozinha', recebido: false },
-    { nome: 'Sanduicheira', categoria: 'Cozinha', recebido: false },
-    { nome: 'Bandeja de Café', categoria: 'Cozinha', recebido: false },
-    { nome: 'Mixer', categoria: 'Cozinha', recebido: false },
-    { nome: 'Filtro', categoria: 'Cozinha', recebido: false },
-    { nome: 'Jogo de cama', categoria: 'Quarto', recebido: false },
-    { nome: 'Jogo de lençol (Cama Casal)', categoria: 'Quarto', recebido: false },
-    { nome: 'Guarda Roupa', categoria: 'Quarto', recebido: false },
-    { nome: 'Cama', categoria: 'Quarto', recebido: false },
-    { nome: 'Edredom', categoria: 'Quarto', recebido: false },
-    { nome: 'Cobertor', categoria: 'Quarto', recebido: false },
-    { nome: 'Toalha', categoria: 'Quarto', recebido: false },
-    { nome: 'Travesseiro', categoria: 'Quarto', recebido: false },
-    { nome: 'Colcha', categoria: 'Quarto', recebido: false }
-  ];
+  presentesCasa: Presente[] = [];
+
+  carregando = false;
+  salvando = false;
+
+  mensagemStatus = '';
+  erroLista = false;
+
+  avisoAlteracoesPendentes = false;
+
+  private estadosOriginais = new Map<number, boolean>();
+
+  constructor(
+    private presenteService: PresenteService
+  ) {}
 
   get totalRecebidos(): number {
-    return this.presentesCasa.filter(p => p.recebido).length;
+    return this.presentesCasa.filter(
+      presente => presente.recebido
+    ).length;
   }
 
-  abrirLista() {
+  get temAlteracoes(): boolean {
+    return this.presentesCasa.some(
+      presente =>
+        this.estadosOriginais.get(presente.id) !== presente.recebido
+    );
+  }
+
+  abrirLista(): void {
     this.modalListaAberto = true;
     document.body.style.overflow = 'hidden';
+
+    this.avisoAlteracoesPendentes = false;
+
+    this.carregarPresentes();
   }
 
-  fecharLista() {
+  fecharLista(): void {
+    if (this.salvando) {
+      return;
+    }
+
+    if (this.temAlteracoes) {
+      this.avisoAlteracoesPendentes = true;
+      return;
+    }
+
     this.modalListaAberto = false;
     document.body.style.overflow = '';
+
+    this.mensagemStatus = '';
+    this.erroLista = false;
+    this.avisoAlteracoesPendentes = false;
   }
 
-  copiarPix() {
+  carregarPresentes(): void {
+    this.carregando = true;
+    this.mensagemStatus = '';
+    this.erroLista = false;
+    this.avisoAlteracoesPendentes = false;
 
-    navigator.clipboard.writeText('davi.m.britto@gmail.com');
+    this.presenteService.listarPresentes()
+      .pipe(
+        finalize(() => this.carregando = false)
+      )
+      .subscribe({
+        next: (presentes) => {
+          this.presentesCasa = presentes;
+
+          this.estadosOriginais = new Map(
+            presentes.map(presente => [
+              presente.id,
+              presente.recebido
+            ])
+          );
+
+          this.avisoAlteracoesPendentes = false;
+        },
+
+        error: () => {
+          this.mensagemStatus =
+            'Não foi possível carregar a lista de presentes. Tente novamente mais tarde.';
+
+          this.erroLista = true;
+        }
+      });
+  }
+
+  salvarAlteracoes(): void {
+    if (
+      this.salvando ||
+      this.carregando ||
+      this.presentesCasa.length === 0 ||
+      !this.temAlteracoes
+    ) {
+      return;
+    }
+
+    this.salvando = true;
+    this.mensagemStatus = '';
+    this.erroLista = false;
+
+    const request = {
+      presentes: this.presentesCasa.map(presente => ({
+        id: presente.id,
+        recebido: presente.recebido
+      }))
+    };
+
+    this.presenteService.alterarRecebidos(request)
+      .pipe(
+        finalize(() => this.salvando = false)
+      )
+      .subscribe({
+        next: () => {
+          this.estadosOriginais = new Map(
+            this.presentesCasa.map(presente => [
+              presente.id,
+              presente.recebido
+            ])
+          );
+
+          this.mensagemStatus =
+            'Lista de presentes atualizada com sucesso!';
+
+          this.erroLista = false;
+          this.avisoAlteracoesPendentes = false;
+        },
+
+        error: () => {
+          this.mensagemStatus =
+            'Não foi possível salvar as alterações. Tente novamente.';
+
+          this.erroLista = true;
+        }
+      });
+  }
+
+  copiarPix(): void {
+    navigator.clipboard.writeText(this.chavePix);
 
     this.notificacaoAberta = true;
 

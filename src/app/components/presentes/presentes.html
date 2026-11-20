@@ -1,7 +1,9 @@
 <section class="section-padrao section-presentes" appScrollReveal>
     <div class="cabecalho">
         <p class="subtitulo">Lista de Presentes</p>
+
         <h1>Presentear é opcional, sua presença é o essencial!</h1>
+
         <p>
             Se quiser nos presentear, escolha um item simbólico e envie por Pix.
             Cada cota vira uma lembrança da nossa nova vida juntos.
@@ -9,6 +11,7 @@
     </div>
 
     <div class="presentes">
+
         <div class="card">
             <img src="images/presentes/meme1.jpg" alt="">
             <div class="card-texto">
@@ -76,6 +79,7 @@
         <div class="lista-casa">
             <div class="lista-casa-info">
                 <span class="material-symbols-outlined">home</span>
+
                 <div>
                     <h3>E a nossa casa nova?</h3>
                     <p>Confira algumas sugestões para nosso novo lar.</p>
@@ -93,16 +97,18 @@
 
             <div class="pix-info">
                 <h1>Chave Pix</h1>
-                <h4>davi.m.britto@gmail.com</h4>
+                <h4>{{ chavePix }}</h4>
 
                 <button type="button" (click)="copiarPix()">
                     <span class="material-symbols-outlined">
                         content_copy
                     </span>
+
                     <p>Copiar Chave Pix</p>
                 </button>
             </div>
         </div>
+
     </div>
 </section>
 
@@ -115,65 +121,137 @@
 }
 
 @if (modalListaAberto) {
-        <div class="lista-modal" (click)="fecharLista()">
+    <div class="lista-modal" (click)="fecharLista()">
 
-            <div class="lista-conteudo" (click)="$event.stopPropagation()">
+        <div class="lista-conteudo" (click)="$event.stopPropagation()">
+
+            <button
+                class="lista-fechar"
+                type="button"
+                aria-label="Fechar lista"
+                [disabled]="salvando"
+                (click)="fecharLista()">
+
+                <span class="material-symbols-outlined">close</span>
+            </button>
+
+            <div class="lista-cabecalho">
+                <p class="subtitulo">Nosso novo lar</p>
+
+                <h2>Nossa casa nova</h2>
+
+                <p>
+                    Pequenos presentes para começar uma grande história ❤️
+                </p>
+            </div>
+
+            @if (avisoAlteracoesPendentes) {
+                <div class="aviso-alteracoes">
+                    <span class="material-symbols-outlined">warning</span>
+                    <p>
+                        Você precisa salvar as alterações antes de fechar a lista.
+                    </p>
+                </div>
+            }
+
+            @if (carregando) {
+                <p class="lista-status">
+                    Carregando lista de presentes...
+                </p>
+
+            } @else if (erroLista && presentesCasa.length === 0) {
+
+                <p class="lista-status erro">
+                    {{ mensagemStatus }}
+                </p>
 
                 <button
-                    class="lista-fechar"
+                    class="btn-lista btn-salvar"
                     type="button"
-                    aria-label="Fechar lista"
-                    (click)="fecharLista()">
-                    <span class="material-symbols-outlined">close</span>
+                    (click)="carregarPresentes()">
+                    Tentar novamente
                 </button>
 
-                <div class="lista-cabecalho">
-                    <p class="subtitulo">Nosso novo lar</p>
-                    <h2>Nossa casa nova</h2>
-                    <p>Pequenos presentes para começar uma grande história ❤️</p>
-                </div>
+            } @else {
 
                 <div class="lista-progresso">
                     <div>
                         <span>Presentes recebidos</span>
-                        <span>{{ totalRecebidos }}/{{ presentesCasa.length }}</span>
+
+                        <span>
+                            {{ totalRecebidos }}/{{ presentesCasa.length }}
+                        </span>
                     </div>
 
                     <div class="progresso-fundo">
                         <div
                             class="progresso-valor"
-                            [style.width.%]="presentesCasa.length ? totalRecebidos / presentesCasa.length * 100 : 0">
+                            [style.width.%]="presentesCasa.length
+                                ? totalRecebidos / presentesCasa.length * 100
+                                : 0">
                         </div>
                     </div>
                 </div>
 
                 <div class="lista-itens">
-                    @for (presente of presentesCasa; track presente.nome) {
+
+                    @for (presente of presentesCasa; track presente.id) {
+
                         <label class="presente-item">
+
                             <div>
                                 <p [class.recebido]="presente.recebido">
                                     {{ presente.nome }}
                                 </p>
+
                                 <span>{{ presente.categoria }}</span>
                             </div>
 
                             <input
                                 type="checkbox"
                                 [checked]="presente.recebido"
-                                (change)="presente.recebido = !presente.recebido">
+                                [disabled]="salvando"
+                                (change)="presente.recebido = $any($event.target).checked">
 
                             <span class="presente-check">
-                                <span class="material-symbols-outlined">check</span>
+                                <span class="material-symbols-outlined">
+                                    check
+                                </span>
                             </span>
+
                         </label>
+
                     }
+
                 </div>
+
+                @if (mensagemStatus) {
+                    <p class="lista-status" [class.erro]="erroLista">
+                        {{ mensagemStatus }}
+                    </p>
+                }
+
+                <button
+                    class="btn-lista btn-salvar"
+                    type="button"
+                    [disabled]="salvando || presentesCasa.length === 0 || !temAlteracoes"
+                    (click)="salvarAlteracoes()">
+
+                    @if (salvando) {
+                        Salvando...
+                    } @else {
+                        Salvar alterações
+                    }
+
+                </button>
 
                 <p class="lista-rodape">
                     Os itens marcados já foram presenteados.
                     Obrigado por fazerem parte desse momento!
                 </p>
 
-            </div>
+            }
+
         </div>
-    }
+    </div>
+}

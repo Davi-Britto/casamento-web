@@ -339,6 +339,31 @@
     outline-offset: 3px;
 }
 
+.lista-status {
+    text-align: center;
+    font-size: 14px;
+    margin: 16px 0;
+}
+
+.lista-status.erro {
+    color: #b3261e;
+}
+
+.btn-salvar {
+    width: 100%;
+    margin-top: 16px;
+}
+
+.btn-salvar:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.lista-fechar:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
 .lista-rodape {
     margin-top: 20px;
     color: #987e6b;
@@ -346,6 +371,35 @@
     font-size: 10px;
     line-height: 1.5;
     text-align: center;
+}
+
+.aviso-alteracoes {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 12px 16px;
+    margin: 0 0 18px;
+
+    background-color: #fff3e0;
+    border: 1px solid #e6bd83;
+    border-radius: 8px;
+
+    color: #80551e;
+}
+
+.aviso-alteracoes .material-symbols-outlined {
+    flex-shrink: 0;
+    font-size: 22px;
+}
+
+.aviso-alteracoes p {
+    margin: 0;
+    font-family: var(--fonte-secundaria);
+    font-size: 13px;
+    line-height: 1.5;
 }
 
 @media (max-width: 900px) {
