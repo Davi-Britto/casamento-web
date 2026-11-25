@@ -11,6 +11,10 @@
     justify-content: center;
 }
 
+.cabecalho{
+    max-width: 1000px;
+}
+
 .card {
     display: flex;
     flex-direction: column;
@@ -23,7 +27,7 @@
 
 .card img {
     width: 100%;
-    height: clamp(115px, 12vw, 150px);
+    height: clamp(148px, 13vw, 225px);
     background: #f4e8dc;
     object-fit: cover;
 }
@@ -472,7 +476,7 @@
     }
 
     .card img {
-        height: 110px;
+        height: 160px;
     }
 
     .card-texto {

@@ -5,15 +5,15 @@
         <h1>Presentear é opcional, sua presença é o essencial!</h1>
 
         <p>
-            Se quiser nos presentear, escolha um item simbólico e envie por Pix.
-            Cada cota vira uma lembrança da nossa nova vida juntos.
+            Se quiser nos presentear, fique à vontade para escolher um presente da lista ou contribuir com qualquer
+            valor via Pix! Cada gesto vira uma lembrança da nossa nova vida juntos.
         </p>
     </div>
 
     <div class="presentes">
 
         <div class="card">
-            <img src="images/presentes/meme1.jpg" alt="">
+            <img src="images/presentes/meme1.webp" alt="">
             <div class="card-texto">
                 <p>Ajuda pra o primeiro passeio na lua de mel</p>
                 <h4>R$ 200,00</h4>
@@ -21,7 +21,7 @@
         </div>
 
         <div class="card">
-            <img src="images/presentes/meme2.jpg" alt="">
+            <img src="images/presentes/meme2.webp" alt="">
             <div class="card-texto">
                 <p>Pau de macarrão pra noiva usar quando necessário</p>
                 <h4>R$ 605,01</h4>
@@ -29,7 +29,7 @@
         </div>
 
         <div class="card">
-            <img src="images/presentes/meme3.jpg" alt="">
+            <img src="images/presentes/meme3.webp" alt="">
             <div class="card-texto">
                 <p>Capacete para o noivo se defender do pau de macarrão</p>
                 <h4>R$ 430,00</h4>
@@ -45,7 +45,7 @@
         </div>
 
         <div class="card">
-            <img src="images/presentes/meme5.jpg" alt="">
+            <img src="images/presentes/meme5.webp" alt="">
             <div class="card-texto">
                 <p>Parcela do vestido da noiva</p>
                 <h4>R$ 786,29</h4>
@@ -53,7 +53,7 @@
         </div>
 
         <div class="card">
-            <img src="images/presentes/meme6.jpg" alt="">
+            <img src="images/presentes/meme6.webp" alt="">
             <div class="card-texto">
                 <p>Vale Coquinha por 2 meses</p>
                 <h4>R$ 329,99</h4>
@@ -61,7 +61,7 @@
         </div>
 
         <div class="card">
-            <img src="images/presentes/meme7.jpg" alt="">
+            <img src="images/presentes/meme7.webp" alt="">
             <div class="card-texto">
                 <p>Primeiro lugar na fila do buffet</p>
                 <h4>R$ 67,67</h4>
@@ -69,7 +69,7 @@
         </div>
 
         <div class="card">
-            <img src="images/presentes/meme8.jpg" alt="">
+            <img src="images/presentes/meme8.webp" alt="">
             <div class="card-texto">
                 <p>Dei o melhor presente</p>
                 <h4>R$ 2.000,00</h4>
@@ -93,7 +93,7 @@
         </div>
 
         <div class="card pix">
-            <img src="images/presentes/qrcode.jpg" alt="QR Code Pix">
+            <img src="images/presentes/qrcode.webp" alt="QR Code Pix">
 
             <div class="pix-info">
                 <h1>Chave Pix</h1>
@@ -113,145 +113,128 @@
 </section>
 
 @if (notificacaoAberta) {
-    <app-notificacao
-        titulo="Chave PIX copiada!"
-        mensagem="A chave foi copiada para sua área de transferência."
-        icone="content_copy">
-    </app-notificacao>
+<app-notificacao titulo="Chave PIX copiada!" mensagem="A chave foi copiada para sua área de transferência."
+    icone="content_copy">
+</app-notificacao>
 }
 
 @if (modalListaAberto) {
-    <div class="lista-modal" (click)="fecharLista()">
+<div class="lista-modal" (click)="fecharLista()">
 
-        <div class="lista-conteudo" (click)="$event.stopPropagation()">
+    <div class="lista-conteudo" (click)="$event.stopPropagation()">
 
-            <button
-                class="lista-fechar"
-                type="button"
-                aria-label="Fechar lista"
-                [disabled]="salvando"
-                (click)="fecharLista()">
+        <button class="lista-fechar" type="button" aria-label="Fechar lista" [disabled]="salvando"
+            (click)="fecharLista()">
 
-                <span class="material-symbols-outlined">close</span>
-            </button>
+            <span class="material-symbols-outlined">close</span>
+        </button>
 
-            <div class="lista-cabecalho">
-                <p class="subtitulo">Nosso novo lar</p>
+        <div class="lista-cabecalho">
+            <p class="subtitulo">Nosso novo lar</p>
 
-                <h2>Nossa casa nova</h2>
+            <h2>Nossa casa nova</h2>
 
-                <p>
-                    Pequenos presentes para começar uma grande história ❤️
-                </p>
+            <p>
+                Pequenos presentes para começar uma grande história ❤️
+            </p>
+        </div>
+
+        @if (avisoAlteracoesPendentes) {
+        <div class="aviso-alteracoes">
+            <span class="material-symbols-outlined">warning</span>
+            <p>
+                Você precisa salvar as alterações antes de fechar a lista.
+            </p>
+        </div>
+        }
+
+        @if (carregando) {
+        <p class="lista-status">
+            Carregando lista de presentes...
+        </p>
+
+        } @else if (erroLista && presentesCasa.length === 0) {
+
+        <p class="lista-status erro">
+            {{ mensagemStatus }}
+        </p>
+
+        <button class="btn-lista btn-salvar" type="button" (click)="carregarPresentes()">
+            Tentar novamente
+        </button>
+
+        } @else {
+
+        <div class="lista-progresso">
+            <div>
+                <span>Presentes recebidos</span>
+
+                <span>
+                    {{ totalRecebidos }}/{{ presentesCasa.length }}
+                </span>
             </div>
 
-            @if (avisoAlteracoesPendentes) {
-                <div class="aviso-alteracoes">
-                    <span class="material-symbols-outlined">warning</span>
-                    <p>
-                        Você precisa salvar as alterações antes de fechar a lista.
-                    </p>
-                </div>
-            }
-
-            @if (carregando) {
-                <p class="lista-status">
-                    Carregando lista de presentes...
-                </p>
-
-            } @else if (erroLista && presentesCasa.length === 0) {
-
-                <p class="lista-status erro">
-                    {{ mensagemStatus }}
-                </p>
-
-                <button
-                    class="btn-lista btn-salvar"
-                    type="button"
-                    (click)="carregarPresentes()">
-                    Tentar novamente
-                </button>
-
-            } @else {
-
-                <div class="lista-progresso">
-                    <div>
-                        <span>Presentes recebidos</span>
-
-                        <span>
-                            {{ totalRecebidos }}/{{ presentesCasa.length }}
-                        </span>
-                    </div>
-
-                    <div class="progresso-fundo">
-                        <div
-                            class="progresso-valor"
-                            [style.width.%]="presentesCasa.length
+            <div class="progresso-fundo">
+                <div class="progresso-valor" [style.width.%]="presentesCasa.length
                                 ? totalRecebidos / presentesCasa.length * 100
                                 : 0">
-                        </div>
-                    </div>
                 </div>
+            </div>
+        </div>
 
-                <div class="lista-itens">
+        <div class="lista-itens">
 
-                    @for (presente of presentesCasa; track presente.id) {
+            @for (presente of presentesCasa; track presente.id) {
 
-                        <label class="presente-item">
+            <label class="presente-item">
 
-                            <div>
-                                <p [class.recebido]="presente.recebido">
-                                    {{ presente.nome }}
-                                </p>
-
-                                <span>{{ presente.categoria }}</span>
-                            </div>
-
-                            <input
-                                type="checkbox"
-                                [checked]="presente.recebido"
-                                [disabled]="salvando"
-                                (change)="presente.recebido = $any($event.target).checked">
-
-                            <span class="presente-check">
-                                <span class="material-symbols-outlined">
-                                    check
-                                </span>
-                            </span>
-
-                        </label>
-
-                    }
-
-                </div>
-
-                @if (mensagemStatus) {
-                    <p class="lista-status" [class.erro]="erroLista">
-                        {{ mensagemStatus }}
+                <div>
+                    <p [class.recebido]="presente.recebido">
+                        {{ presente.nome }}
                     </p>
-                }
 
-                <button
-                    class="btn-lista btn-salvar"
-                    type="button"
-                    [disabled]="salvando || presentesCasa.length === 0 || !temAlteracoes"
-                    (click)="salvarAlteracoes()">
+                    <span>{{ presente.categoria }}</span>
+                </div>
 
-                    @if (salvando) {
-                        Salvando...
-                    } @else {
-                        Salvar alterações
-                    }
+                <input type="checkbox" [checked]="presente.recebido" [disabled]="salvando"
+                    (change)="presente.recebido = $any($event.target).checked">
 
-                </button>
+                <span class="presente-check">
+                    <span class="material-symbols-outlined">
+                        check
+                    </span>
+                </span>
 
-                <p class="lista-rodape">
-                    Os itens marcados já foram presenteados.
-                    Obrigado por fazerem parte desse momento!
-                </p>
+            </label>
 
             }
 
         </div>
+
+        @if (mensagemStatus) {
+        <p class="lista-status" [class.erro]="erroLista">
+            {{ mensagemStatus }}
+        </p>
+        }
+
+        <button class="btn-lista btn-salvar" type="button"
+            [disabled]="salvando || presentesCasa.length === 0 || !temAlteracoes" (click)="salvarAlteracoes()">
+
+            @if (salvando) {
+            Salvando...
+            } @else {
+            Salvar alterações
+            }
+
+        </button>
+
+        <p class="lista-rodape">
+            Os itens marcados já foram presenteados.
+            Obrigado por fazerem parte desse momento!
+        </p>
+
+        }
+
     </div>
+</div>
 }
